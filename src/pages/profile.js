@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+
+import EditModal from "../components/editModal";
+
 import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBBtn,
 } from "mdb-react-ui-kit";
 
 const Profile = () => {
@@ -19,7 +21,6 @@ const Profile = () => {
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log(response);
         setName(response.data.name);
         setBio(response.data.bio);
       })
@@ -30,24 +31,24 @@ const Profile = () => {
   });
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <MDBCard style={{ width: "400px", height: "200px" }}>
-        <MDBCardBody>
-          <MDBCardTitle>{name}</MDBCardTitle>
-          <MDBCardText>
-           {bio}
-          </MDBCardText>
-          <MDBBtn>Edit</MDBBtn>
-        </MDBCardBody>
-      </MDBCard>
-    </div>
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <MDBCard style={{ width: "400px", height: "200px" }}>
+          <MDBCardBody>
+            <MDBCardTitle>{name}</MDBCardTitle>
+            <MDBCardText>{bio}</MDBCardText>
+          </MDBCardBody>
+          <EditModal />
+        </MDBCard>
+      </div>
+    </>
   );
 };
 
