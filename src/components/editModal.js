@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   MDBBtn,
@@ -10,10 +9,10 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
-  MDBTextArea
+  MDBTextArea,
 } from "mdb-react-ui-kit";
 
-const EditModal = () => {
+const EditModal = ({ name, bio }) => {
   const [basicModal, setBasicModal] = useState(false);
 
   const toggleOpen = () => setBasicModal(!basicModal);
@@ -35,9 +34,9 @@ const EditModal = () => {
               ></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
-              <MDBInput id="form1" label="Name" />
+              <MDBInput id="form1" label="Name" value={name} />
               <br />
-              <MDBTextArea id="form13" label="Bio" />
+              <MDBTextArea id="form13" label="Bio" value={bio} />
             </MDBModalBody>
 
             <MDBModalFooter>
