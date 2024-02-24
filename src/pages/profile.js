@@ -10,6 +10,11 @@ import {
 const Profile = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
+  const [contact_info, setContactInfo] = useState("");
+  const [pronouns, setPronouns] = useState("");
+  const [emergency_contact, setEmergencyContact] = useState("");
+  const [roles, setRoles] = useState("");
+  const [resume, setResume] = useState("");
 
   const fetchProfileData = () => {
     const url = window.location.pathname;
@@ -21,6 +26,11 @@ const Profile = () => {
       .then((response) => {
         setName(response.data.name);
         setBio(response.data.bio);
+        setContactInfo(response.data.contact_info);
+        setPronouns(response.data.pronouns);
+        setEmergencyContact(response.data.emergency_contact);
+        setRoles(response.data.roles);
+        setResume(response.data.resume);
       })
       .catch((error) => console.error("Error:", error));
   };
@@ -41,7 +51,8 @@ const Profile = () => {
       <MDBCard style={{ width: "400px", height: "200px" }}>
         <MDBCardBody>
           <MDBCardTitle>{name}</MDBCardTitle>
-          <MDBCardText>{bio}</MDBCardText>
+          <MDBCardText>{bio}</MDBCardText> 
+          {/* ------------------------------------you would pass in the other values just like name and bio */}
           {/* Pass bio as a prop to EditModal */}
           <EditModal name={name} bio={bio} />
         </MDBCardBody>
